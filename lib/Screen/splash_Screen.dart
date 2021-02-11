@@ -1,8 +1,9 @@
 import 'dart:async';
 
-import 'package:flight_booking/Comman_widget/colors.dart';
-import 'package:flight_booking/Comman_widget/string.dart';
-import 'package:flight_booking/Screen/login.dart';
+
+import 'package:flight_booking/common/colors.dart';
+import 'package:flight_booking/common/string.dart';
+import 'package:flight_booking/Screen/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

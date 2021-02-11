@@ -28,13 +28,13 @@ class LandScapeMode  extends StatelessWidget {
   }
 }
 
- //  OrientationBuilder(
-      // builder: (context, orientation){
-      //  if(orientation == Orientation.portrait){
-      // return PortraitMode();
-      //    }else{
-      // return LandScapeMode(); 
-      //     }
-      //    },
-      //  ),
+  // OrientationBuilder(
+  //     builder: (context, orientation){
+  //      if(orientation == Orientation.portrait){
+  //     return PortraitMode();
+  //        }else{
+  //     return LandScapeMode(); 
+  //         }
+  //        },
+  //      ),
 

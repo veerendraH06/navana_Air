@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'Screen/signup.dart';
 import 'Screen/splash_Screen.dart';
 
 void main() {
@@ -12,10 +13,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
 
-      initialRoute: '/', /// Route of the page 
-      routes: {
-        '/':(context)=>Splash_Screen(), ///load Splash Screen
-      },
+      // initialRoute: '/', /// Route of the page 
+      // routes: {
+      //   '/':(context)=>Splash_Screen(), ///load Splash Screen
+
+      //   '/Sign_up':(context)=>Sign_upPage(),
+      // },
 
       // title: 'Flutter Demo',
       // theme: ThemeData(
@@ -24,7 +27,7 @@ class MyApp extends StatelessWidget {
      
       //   visualDensity: VisualDensity.adaptivePlatformDensity,
       // ),
-      // home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Sign_upPage(),
     );
   }
 }

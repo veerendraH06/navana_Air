@@ -1,10 +1,9 @@
-
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flight_booking/Comman_widget/buttons.dart';
-import 'package:flight_booking/Comman_widget/colors.dart';
-import 'package:flight_booking/Comman_widget/orintabuild.dart';
-import 'package:flight_booking/Comman_widget/string.dart';
-import 'package:flight_booking/Comman_widget/swipeImages.dart';
+import 'package:flight_booking/Component_widget/buttons.dart';
+import 'package:flight_booking/Screen/signup.dart';
+import 'package:flight_booking/common/colors.dart';
+import 'package:flight_booking/common/string.dart';
+import 'package:flight_booking/Component_widget/swipeImages.dart';
 
 import 'package:flutter/material.dart';
 
@@ -15,46 +14,46 @@ class Start_App extends StatefulWidget {
 }
 
 class _Start_AppState extends State<Start_App> {
-   
-   CarouselSlider carouselSlider;
-   int _current =0;
+  CarouselSlider carouselSlider;
+  int _current = 0;
 
-
-    ///For loop for image 
-
-   List<T> map<T>(List list, Function handler) {
+  ///For loop for image
+  List<T> map<T>(List list, Function handler) {
     List<T> result = [];
     for (var i = 0; i < list.length; i++) {
       result.add(handler(i, list[i]));
     }
     return result;
   }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-    
-      body: 
-      //  OrientationBuilder(
-      // builder: (context, orientation){
-      //  if(orientation == Orientation.portrait){
-      // return PortraitMode();
-      //    }else{
-      // return LandScapeMode(); 
-      //     }
-      //    },
-      //  ),
  
-        Container(
-         height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
+    final width = MediaQuery.of(context).size.width;
+    try {
+      if (width > 600) {
+        return Carosel(250);
+      } else {
+          return Carosel(500);
+      }
+    } catch (e) {}
+  }
+  Widget Carosel(
+    double height
+  ){
+return Scaffold(
+      body: Container(
         
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            /// carouselSlider package usage 
+            /// carouselSlider package usage
             carouselSlider = CarouselSlider(
-             height: MediaQuery.of(context).size.height*0.5,
+              height: height,
+              // height: MediaQuery.of(context).size.height * 0.5,
               initialPage: 0,
               enlargeCenterPage: true,
               autoPlay: true,
@@ -70,23 +69,23 @@ class _Start_AppState extends State<Start_App> {
               },
               items: imgList.map((imgUrl) {
                 return Builder(
-                  
                   builder: (BuildContext context) {
                     return Container(
-                      height: MediaQuery.of(context).size.width*6,
-                      width: MediaQuery.of(context).size.width*4,
-                      margin: EdgeInsets.symmetric(horizontal: 10.0),
+                    
+                      height: MediaQuery.of(context).size.width * 6,
+                      width: MediaQuery.of(context).size.width * 4,
+                    
                       // decoration: BoxDecoration(
-                        
+
                       //   color: Vcolors.vBlue,
-                       
+
                       // ),
                       // reciving images to using string
                       child: Image.network(
                         imgUrl,
-                        height: MediaQuery.of(context).size.height*0.9,
-                        width: MediaQuery.of(context).size.width*0.6,
-                        fit: BoxFit.fill,
+                        height: MediaQuery.of(context).size.height * 0.9,
+                        width: MediaQuery.of(context).size.width * 0.6,
+                        // fit: BoxFit.fill,
                       ),
                     );
                   },
@@ -97,18 +96,18 @@ class _Start_AppState extends State<Start_App> {
               height: 20,
             ),
 
-            /// circule doted lines moving row 
+            /// circule doted lines moving row
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: map<Widget>(imgList, (index, url) {
                 return Container(
-                 width: MediaQuery.of(context).size.width*0.020,
-                 height: MediaQuery.of(context).size.height*0.020,
+                  width: MediaQuery.of(context).size.width * 0.020,
+                  height: MediaQuery.of(context).size.height * 0.020,
                   margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                   decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: _current == index ? Vcolors.vBlue :Vcolors.ButtonColor,
-                  
+                    // shape: BoxShape.circle,
+                    color:
+                        _current == index ? Vcolors.vBlue : Vcolors.ButtonColor,
                   ),
                 );
               }),
@@ -121,18 +120,21 @@ class _Start_AppState extends State<Start_App> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                RaisedButtons(onPressed: (){},
-                text:ConstantString.buttonforGetStarted,)
+                RaisedButtons(
+                  onPressed: () {
+                  // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Sign_upPage()));
+                  Navigator.of(context).pushNamed('/Sign_up');
+                  
+                  },
+                  text: ConstantString.buttonforGetStarted,
+                )
               ],
-
             ),
-           
-          
           ],
         ),
       ),
     );
   }
-
+    
   }
-
+  
