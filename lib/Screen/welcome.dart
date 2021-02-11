@@ -1,0 +1,138 @@
+
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flight_booking/Comman_widget/buttons.dart';
+import 'package:flight_booking/Comman_widget/colors.dart';
+import 'package:flight_booking/Comman_widget/orintabuild.dart';
+import 'package:flight_booking/Comman_widget/string.dart';
+import 'package:flight_booking/Comman_widget/swipeImages.dart';
+
+import 'package:flutter/material.dart';
+
+class Start_App extends StatefulWidget {
+  // Start_Booking():super();
+  @override
+  _Start_AppState createState() => _Start_AppState();
+}
+
+class _Start_AppState extends State<Start_App> {
+   
+   CarouselSlider carouselSlider;
+   int _current =0;
+
+
+    ///For loop for image 
+
+   List<T> map<T>(List list, Function handler) {
+    List<T> result = [];
+    for (var i = 0; i < list.length; i++) {
+      result.add(handler(i, list[i]));
+    }
+    return result;
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+    
+      body: 
+      //  OrientationBuilder(
+      // builder: (context, orientation){
+      //  if(orientation == Orientation.portrait){
+      // return PortraitMode();
+      //    }else{
+      // return LandScapeMode(); 
+      //     }
+      //    },
+      //  ),
+ 
+        Container(
+         height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+        
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            /// carouselSlider package usage 
+            carouselSlider = CarouselSlider(
+             height: MediaQuery.of(context).size.height*0.5,
+              initialPage: 0,
+              enlargeCenterPage: true,
+              autoPlay: true,
+              enableInfiniteScroll: true,
+              autoPlayInterval: Duration(seconds: 2),
+              // autoPlayAnimationDuration: Duration(seconds: 1),
+              pauseAutoPlayOnTouch: Duration(seconds: 10),
+              scrollDirection: Axis.horizontal,
+              onPageChanged: (index) {
+                setState(() {
+                  _current = index;
+                });
+              },
+              items: imgList.map((imgUrl) {
+                return Builder(
+                  
+                  builder: (BuildContext context) {
+                    return Container(
+                      height: MediaQuery.of(context).size.width*6,
+                      width: MediaQuery.of(context).size.width*4,
+                      margin: EdgeInsets.symmetric(horizontal: 10.0),
+                      // decoration: BoxDecoration(
+                        
+                      //   color: Vcolors.vBlue,
+                       
+                      // ),
+                      // reciving images to using string
+                      child: Image.network(
+                        imgUrl,
+                        height: MediaQuery.of(context).size.height*0.9,
+                        width: MediaQuery.of(context).size.width*0.6,
+                        fit: BoxFit.fill,
+                      ),
+                    );
+                  },
+                );
+              }).toList(),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+
+            /// circule doted lines moving row 
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: map<Widget>(imgList, (index, url) {
+                return Container(
+                 width: MediaQuery.of(context).size.width*0.020,
+                 height: MediaQuery.of(context).size.height*0.020,
+                  margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: _current == index ? Vcolors.vBlue :Vcolors.ButtonColor,
+                  
+                  ),
+                );
+              }),
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+
+            /// Raised button for Get started
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                RaisedButtons(onPressed: (){},
+                text:ConstantString.buttonforGetStarted,)
+              ],
+
+            ),
+           
+          
+          ],
+        ),
+      ),
+    );
+  }
+
+  }
+
