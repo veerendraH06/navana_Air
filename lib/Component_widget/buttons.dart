@@ -10,11 +10,11 @@ class RaisedButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.07,
-      width: MediaQuery.of(context).size.width * 0.5,
+      // height: MediaQuery.of(context).size.height * 0.07,
+      // width: MediaQuery.of(context).size.width * 0.5,
       child: RaisedButton(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(18.0),
+          borderRadius: BorderRadius.circular(80),
         ),
         child: Text(text,
             style: TextStyle(

@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
      
       //   visualDensity: VisualDensity.adaptivePlatformDensity,
       // ),
-      home: Sign_upPage(),
+      home: SignUp(),
     );
   }
 }
