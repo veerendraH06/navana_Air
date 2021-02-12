@@ -5,11 +5,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
-  
 }
 
 class _LoginScreenState extends State<LoginScreen> {
@@ -76,14 +74,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: MediaQuery.of(context).size.width * 0.6,
                   height: MediaQuery.of(context).size.height * 0.1,
                   margin: const EdgeInsets.only(top: 60, right: 100),
-
                 ),
-
-                
 
                 /// Text Email
                 Container(
-                  
                   child: ListTile(
                     title: Text(
                       ConstantString.email,
@@ -104,7 +98,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     decoration: InputDecoration(
                       suffixIcon: Icon(
                         Icons.email,
-                      
                       ),
                       enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.black54),
@@ -145,12 +138,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   margin: const EdgeInsets.only(left: 30, right: 30, top: 20),
                 ),
-                SizedBox(height: 20,),
-                Row(mainAxisAlignment: MainAxisAlignment.end,
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                  Text(ConstantString.forgetpass),
-                ],
-                
+                    Text(ConstantString.forgetpass,style: TextStyle(color: Vcolors.deepgrey),),
+                  ],
                 ),
 
                 /// custom Sign up Button coming from Button.dart
@@ -160,7 +155,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Container(
                         height: 60,
                         width: 300,
-
                         child: RaisedButtons(
                           onPressed: () {
                             if (_formKey.currentState.validate()) {
@@ -187,62 +181,57 @@ class _LoginScreenState extends State<LoginScreen> {
                             style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.bold,
-                           
                             ),
                           ),
-                          FlatButton(
-                            child: Text(
-                              ConstantString.signupButton,
-                              style: TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.bold,
-                                color: Vcolors.ButtonColor
-                              ),
+                          Container(
+                            padding: const EdgeInsets.only(left: 25),
+                            child: FloatingActionButton(
+                              onPressed: () {},
+                              child: Image.network(ConstantString.fbImage),
+                              backgroundColor: Colors.white,
                             ),
-                            onPressed: () {
-                              // Navigator.of(context).push(
-                                // MaterialPageRoute(
-                                //     builder: (context) => LoginScreen()),
-                              // );
-                            },
                           ),
+                          Container(
+                            padding: const EdgeInsets.only(left: 25),
+                            child: FloatingActionButton(
+                              onPressed: () {},
+                              child: Image.network(ConstantString.googleImage),
+                              backgroundColor: Colors.white,
+                            ),
+                          )
                         ],
                       ),
                       SizedBox(
-                  
-                  height: MediaQuery.of(context).size.height * 0.025,
-                 
+                        height: MediaQuery.of(context).size.height * 0.025,
                       ),
-                      Row(mainAxisAlignment: MainAxisAlignment.center,
-                        children:[Text(
-                            ConstantString.donthaveacc,
-                            style: TextStyle(
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                            
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              ConstantString.donthaveacc,
+                              style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          FlatButton(
+                            FlatButton(
                               child: Text(
                                 ConstantString.signupButton,
                                 style: TextStyle(
                                   fontSize: 17,
                                   fontWeight: FontWeight.bold,
-                                   color: Vcolors.ButtonColor,
+                                  color: Vcolors.ButtonColor,
                                 ),
                               ),
                               onPressed: () {
                                 // Navigator.of(context).push(
-                                  // MaterialPageRoute(
-                                  //     builder: (context) => LoginScreen()),
+                                // MaterialPageRoute(
+                                //     builder: (context) => LoginScreen()),
                                 // );
                               },
                             ),
 // margin: const EdgeInsets.only(top: 10),
-                        
-                      ]
-                      ),
-                
+                          ]),
                     ],
                   ),
                   margin: const EdgeInsets.only(top: 80),

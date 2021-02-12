@@ -17,7 +17,8 @@ class ConstantString
   static const forgetpass="Forget Password?";
   static const loginWith="Log In With";
   static const donthaveacc="Don't have an account?";
-
+ static const String fbImage = 'https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512';
+static const String googleImage = "https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png";
 
  }
 
