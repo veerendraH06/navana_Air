@@ -3,97 +3,87 @@ import 'package:flight_booking/common/colors.dart';
 import 'package:flight_booking/common/string.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 
 
-class SignUp extends StatefulWidget {
+class LoginScreen extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() =>SignUp_State();
+  _LoginScreenState createState() => _LoginScreenState();
   
 }
 
-// ignore: camel_case_types
-class SignUp_State extends State<SignUp> {
+class _LoginScreenState extends State<LoginScreen> {
   bool _passwordvisible;
-  // bool _autoValidate = false;
-
   final _formKey = GlobalKey<FormState>();
-  String email;
 
   @override
-  // ignore: must_call_super
   void initState() {
-    super.initState();
     _passwordvisible = false;
   }
 
-  
+  /// method to validate the password
+  String validatePassword(String value) {
+    Pattern pattern =
+        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+    RegExp regex = new RegExp(pattern);
+    print(value);
+    if (value.isEmpty) {
+      return 'Please enter password';
+    } else {
+      if (!regex.hasMatch(value))
+        return 'Enter valid password';
+      else
+        return null;
+    }
+  }
+
+  /// method to validate the email
+  String validateEmail(String value) {
+    Pattern pattern = r'^(?=.*?[a-z])(?=.*?[!@#\$&*~]).{8,}$';
+    RegExp regex = new RegExp(pattern);
+    print(value);
+
+    if (value.isEmpty) {
+      return 'Please enter Email';
+    } else {
+      if (!regex.hasMatch(value))
+        return 'Enter valid Email';
+      else
+        return null;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: Appbarwidget.getAppBar("login"),
+// appBar: Appbarwidget.getAppBar("login"),
       body: ListView(
         children: [
           Form(
             key: _formKey,
-            // autovalidate: _autoValidate,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 /// Create account Text
                 Container(
                   child: Text(
-                    ConstantString.createAccount,
+                    ConstantString.loginText,
                     style: GoogleFonts.roboto(
                         fontSize: 35,
                         fontWeight: FontWeight.bold,
                         color: Vcolors.deepgrey),
                   ),
                   width: MediaQuery.of(context).size.width * 0.6,
-                  height: MediaQuery.of(context).size.height * 0.19,
-                  margin: const EdgeInsets.only(top: 30, right: 100),
-                  // color: Colors.yellow,
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  margin: const EdgeInsets.only(top: 60, right: 100),
+
                 ),
 
-                /// Text Name
-                Container(
-                  child: ListTile(
-                    title: Text(
-                      ConstantString.name,
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black54),
-                    ),
-                  ),
-                  margin: const EdgeInsets.only(left: 14),
-                  // color: Colors.blueAccent,
-                ),
-
-                /// TextField for Name
-                Container(
-                  child: TextFormField(
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please enter your Name';
-                      }
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black54),
-                      ),
-                      hintText: "Name",
-                    ),
-                  ),
-                  margin: const EdgeInsets.only(left: 30, right: 30),
-                  //color: Colors.deepOrangeAccent,
-                ),
+                
 
                 /// Text Email
                 Container(
+                  
                   child: ListTile(
                     title: Text(
                       ConstantString.email,
@@ -109,23 +99,12 @@ class SignUp_State extends State<SignUp> {
                 /// Email validation TextField
                 Container(
                   child: TextFormField(
-                    validator: (String value) {
-                      if (value.isEmpty) {
-                        return 'Please a Enter';
-                      }
-                      if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
-                          .hasMatch(value)) {
-                        return 'Please a valid Email';
-                      }
-                      return null;
-                    },
-                    onSaved: (String value) {
-                      email = value;
-                    },
-                    // controller: controller_email,
+                    validator: validateEmail,
+// controller: controller_email,
                     decoration: InputDecoration(
                       suffixIcon: Icon(
                         Icons.email,
+                      
                       ),
                       enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.black54),
@@ -141,13 +120,13 @@ class SignUp_State extends State<SignUp> {
                 Container(
                   child: TextFormField(
                     validator: validatePassword,
-                    // controller: controller_password,
+// controller: controller_password,
                     keyboardType: TextInputType.text,
                     obscureText: !_passwordvisible,
                     decoration: InputDecoration(
                       labelText: 'Password',
                       hintText: 'Enter your password',
-                      // Here is key idea
+// Here is key idea
                       suffixIcon: IconButton(
                         icon: Icon(
                           _passwordvisible
@@ -156,7 +135,7 @@ class SignUp_State extends State<SignUp> {
                           color: Colors.black54,
                         ),
                         onPressed: () {
-                          // Update the state i.e. toogle the state of passwordVisible variable
+// Update the state i.e. toogle the state of passwordVisible variable
                           setState(() {
                             _passwordvisible = !_passwordvisible;
                           });
@@ -166,6 +145,13 @@ class SignUp_State extends State<SignUp> {
                   ),
                   margin: const EdgeInsets.only(left: 30, right: 30, top: 20),
                 ),
+                SizedBox(height: 20,),
+                Row(mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                  Text(ConstantString.forgetpass),
+                ],
+                
+                ),
 
                 /// custom Sign up Button coming from Button.dart
                 Container(
@@ -174,21 +160,17 @@ class SignUp_State extends State<SignUp> {
                     child: Container(
                         height: 60,
                         width: 300,
+
                         child: RaisedButtons(
                           onPressed: () {
-                            print("successful");
                             if (_formKey.currentState.validate()) {
-                              print("successful");
-                              return;
-                            } else {
-                              print("unsuccessfull");
+                              // Navigator.of(context).push(
+                              //   MaterialPageRoute(
+                              //       builder: (context) => HomeScreen()),
+                              // );
                             }
-                            // Navigator.of(context).push(
-                            //   MaterialPageRoute(
-                            //       builder: (context) =>),
-                            // );
                           },
-                          text: (ConstantString.signupButton),
+                          text: (ConstantString.loginText),
                         )),
                   ),
                 ),
@@ -201,43 +183,66 @@ class SignUp_State extends State<SignUp> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            ConstantString.alredyacc,
+                            ConstantString.loginWith,
                             style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.bold,
-                              color: Colors.black54,
+                           
                             ),
                           ),
                           FlatButton(
                             child: Text(
-                              ConstantString.signin,
+                              ConstantString.signupButton,
                               style: TextStyle(
-                                color: Vcolors.ButtonColor,
                                 fontSize: 17,
                                 fontWeight: FontWeight.bold,
+                                color: Vcolors.ButtonColor
                               ),
                             ),
-                            // onPressed: verifyemail,
-                            //     () {
-                            //   Navigator.of(context).push(
-                            //     MaterialPageRoute(
-                            //         builder: (context) => LoginScreen()),
-                            //   );
-                            // },
+                            onPressed: () {
+                              // Navigator.of(context).push(
+                                // MaterialPageRoute(
+                                //     builder: (context) => LoginScreen()),
+                              // );
+                            },
                           ),
                         ],
                       ),
-                      Container(
-                        child: Text(
-                          ConstantString.skiptext,
-                          style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black54,
-                          ),
-                        ),
-                        //    margin: const EdgeInsets.only(top: 10),
+                      SizedBox(
+                  
+                  height: MediaQuery.of(context).size.height * 0.025,
+                 
                       ),
+                      Row(mainAxisAlignment: MainAxisAlignment.center,
+                        children:[Text(
+                            ConstantString.donthaveacc,
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                            
+                            ),
+                          ),
+                          FlatButton(
+                              child: Text(
+                                ConstantString.signupButton,
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                   color: Vcolors.ButtonColor,
+                                ),
+                              ),
+                              onPressed: () {
+                                // Navigator.of(context).push(
+                                  // MaterialPageRoute(
+                                  //     builder: (context) => LoginScreen()),
+                                // );
+                              },
+                            ),
+// margin: const EdgeInsets.only(top: 10),
+                        
+                      ]
+                      ),
+                
                     ],
                   ),
                   margin: const EdgeInsets.only(top: 80),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+
+import 'Screen/login.dart';
 import 'Screen/signup.dart';
 import 'Screen/splash_Screen.dart';
 
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
      
       //   visualDensity: VisualDensity.adaptivePlatformDensity,
       // ),
-      home: SignUp(),
+      home: LoginScreen(),
     );
   }
 }
