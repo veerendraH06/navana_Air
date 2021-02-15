@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-
+import 'Screen/home_screen.dart';
 import 'Screen/login.dart';
 import 'Screen/signup.dart';
 import 'Screen/splash_Screen.dart';
@@ -14,8 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
-      // initialRoute: '/', /// Route of the page 
+      // initialRoute: '/', /// Route of the page
       // routes: {
       //   '/':(context)=>Splash_Screen(), ///load Splash Screen
 
@@ -24,20 +23,18 @@ class MyApp extends StatelessWidget {
 
       // title: 'Flutter Demo',
       // theme: ThemeData(
-      
+
       //   primarySwatch: Colors.blue,
-     
+
       //   visualDensity: VisualDensity.adaptivePlatformDensity,
       // ),
-      home: LoginScreen(),
+      home: Home_Screen(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-
- 
 
   final String title;
 
@@ -50,23 +47,18 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-   
       _counter++;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
-       
         title: Text(widget.title),
       ),
       body: Center(
-      
         child: Column(
-        
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(

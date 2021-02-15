@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../common/colors.dart';
@@ -23,6 +22,20 @@ class RaisedButtons extends StatelessWidget {
         color: Vcolors.ButtonColor,
         onPressed: () {},
       ),
+    );
+  }
+}
+
+class FlatCustomButton extends StatelessWidget {
+  FlatCustomButton({@required this.onPressed, @required this.title});
+  final String title;
+  final GestureTapCallback onPressed;
+  @override
+  Widget build(BuildContext context) {
+    return FlatButton(
+      onPressed: () {},
+      child: Text(title,
+          style: TextStyle(color: Vcolors.ButtonColor, fontSize: 15)),
     );
   }
 }

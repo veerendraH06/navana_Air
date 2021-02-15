@@ -1,9 +1,12 @@
 import 'package:flight_booking/Component_widget/buttons.dart';
 import 'package:flight_booking/common/colors.dart';
 import 'package:flight_booking/common/string.dart';
+import 'package:flight_booking/services/login_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -144,7 +147,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text(ConstantString.forgetpass,style: TextStyle(color: Vcolors.deepgrey),),
+                    Text(
+                      ConstantString.forgetpass,
+                      style: TextStyle(color: Vcolors.deepgrey),
+                    ),
                   ],
                 ),
 
@@ -194,7 +200,15 @@ class _LoginScreenState extends State<LoginScreen> {
                           Container(
                             padding: const EdgeInsets.only(left: 25),
                             child: FloatingActionButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                signInWithGoogle().whenComplete(() {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(builder: (context) {
+                                      return Home_Screen();
+                                    }),
+                                  );
+                                });
+                              },
                               child: Image.network(ConstantString.googleImage),
                               backgroundColor: Colors.white,
                             ),
