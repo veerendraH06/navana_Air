@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flight_booking/Component_widget/buttons.dart';
 import 'package:flight_booking/common/colors.dart';
 import 'package:flight_booking/common/string.dart';
@@ -163,11 +164,24 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: 300,
                         child: RaisedButtons(
                           onPressed: () {
-                            if (_formKey.currentState.validate()) {
-                              // Navigator.of(context).push(
-                              //   MaterialPageRoute(
-                              //       builder: (context) => HomeScreen()),
-                              // );
+                            // FirebaseAuth.instance.currentUser().then((firebaseUser) {
+                            //   if (firebaseUser == null) {
+                            //
+                            //     Navigator.pushReplacement(
+                            //         context,
+                            //         MaterialPageRoute(
+                            //             builder: (BuildContext context) => LoginScreen()));
+                            //   } else {
+                            //     Navigator.pushReplacement(context,
+                            //         MaterialPageRoute(builder: (BuildContext context) => Home_Screen()));
+                            //   }
+                            // });
+                            // Navigator.push(context, MaterialPageRoute(builder: (context)=> Home_Screen()));
+                             if (_formKey.currentState.validate()) {
+                            //   // Navigator.of(context).push(
+                            //   //   MaterialPageRoute(
+                            //   //       builder: (context) => HomeScreen()),
+                            //   // );
                             }
                           },
                           text: (ConstantString.loginText),
@@ -192,6 +206,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Container(
                             padding: const EdgeInsets.only(left: 25),
                             child: FloatingActionButton(
+                              heroTag: "FbButton",
                               onPressed: () {},
                               child: Image.network(ConstantString.fbImage),
                               backgroundColor: Colors.white,
@@ -200,6 +215,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Container(
                             padding: const EdgeInsets.only(left: 25),
                             child: FloatingActionButton(
+                              heroTag: "Googlebutton",
                               onPressed: () {
                                 signInWithGoogle().whenComplete(() {
                                   Navigator.of(context).push(

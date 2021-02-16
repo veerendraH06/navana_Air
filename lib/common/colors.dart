@@ -7,4 +7,5 @@ class Vcolors {
   static const Color TextColor = Color(0xffFFFFFF);
   static const Color deepgrey = Color(0xffA7A4A4);
   static const Color blackText = Color(0xff21130d);
+
 }

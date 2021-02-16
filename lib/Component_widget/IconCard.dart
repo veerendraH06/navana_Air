@@ -1,9 +1,11 @@
+import 'package:flight_booking/common/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class CircularCard extends StatelessWidget{
   final IconData icon;
-  final String text,color;
-  CircularCard({ this.icon, this.text, this.color});
+  final String text,colors;
+  CircularCard({ this.icon, this.text, this.colors});
 
   @override
   Widget build(BuildContext context) {
@@ -11,12 +13,15 @@ class CircularCard extends StatelessWidget{
     return Column(
       children: [
         Container(
+
           child: Card(
-            child: Icon(icon,color: Colors.pinkAccent,),
+            color: HexColor(colors),
+            child: Icon(icon,color: Vcolors.ButtonColor,),
             elevation: 10,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(50),
             ),
+
           ),
           width: 80,
           height: 80,

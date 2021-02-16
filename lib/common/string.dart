@@ -23,6 +23,10 @@ class ConstantString {
   static const String googleImage =
       "https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png";
   static const home = "Home";
+  static const Bestoff = "Best Offers";
+  static const recoDestination = "Recommended Destination";
+  static const Viewall = "View All";
+  static const popularPlc = "Popular Places";
   static const flight="Flight";
   static const hotel="hotel";
   static const car="car";

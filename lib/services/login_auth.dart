@@ -15,7 +15,7 @@ Future<String> signInWithGoogle() async {
   );
 
   final AuthResult authResult = await _auth.signInWithCredential(credential);
-
+try{
   final FirebaseUser user = authResult.user;
 
   assert(!user.isAnonymous);
@@ -23,12 +23,28 @@ Future<String> signInWithGoogle() async {
 
   final FirebaseUser currentUser = await _auth.currentUser();
   assert(user.uid == currentUser.uid);
-
   return 'signInWithGoogle succeeded: $user';
+}
+
+catch (e){
+
+  print(e);
+}
+//   final FirebaseUser user = authResult.user;
+//
+//   assert(!user.isAnonymous);
+//   assert(await user.getIdToken() != null);
+//
+//   final FirebaseUser currentUser = await _auth.currentUser();
+//   assert(user.uid == currentUser.uid);
+//
+//   return 'signInWithGoogle succeeded: $user';
 }
 
 void signOutGoogle() async {
   await googleSignIn.signOut();
 
+
   print("User Sign Out");
 }
+
