@@ -16,23 +16,20 @@ class Home_Screen extends StatefulWidget {
 }
 
 class Home_state extends State<Home_Screen> {
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  // }
+
   Future<void> _signOut() async {
     await FirebaseAuth.instance.signOut();
+    print("signout successfully");
   }
   // void signOut(){
   //   FirebaseAuth.instance.signOut();
   //   Future<FirebaseUser> Function() user = FirebaseAuth.instance.currentUser;
   // }
-  // @override
-  // void dispose() {
-  //   // TODO: implement dispose
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+// _signOut().dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,17 +56,17 @@ class Home_state extends State<Home_Screen> {
                 CircularCard(
                   icon: Icons.flight_outlined,
                   text: ConstantString.flight,
-                  colors: '#F6A6F8',
+                  colors: '#DF3E53',
                 ),
                 CircularCard(
-                  icon: Icons.home_work_sharp,
+                  icon: Icons.hotel_outlined,
                   text: ConstantString.hotel,
-                  colors: '#59F848',
+                  colors: '#55C908',
                 ),
                 CircularCard(
-                  icon: Icons.car_rental,
+                  icon: Icons.local_car_wash,
                   text: ConstantString.car,
-                  colors: '#5B5DDB',
+                  colors: '#5B56C7',
                 ),
                 CircularCard(
                   icon: Icons.restaurant_menu,
@@ -93,7 +90,7 @@ class Home_state extends State<Home_Screen> {
           ListTile(
             title: Text(
               "Best offers",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
             ),
             subtitle: Text(
               "Recommended Destination",
@@ -104,7 +101,7 @@ class Home_state extends State<Home_Screen> {
             ),
             trailing: Text(
               'ViewAll',
-              style: TextStyle(color: Vcolors.ButtonColor),
+              style: TextStyle(color: Vcolors.ButtonColor,fontWeight: FontWeight.bold),
             ),
           ),
           Container(
@@ -118,6 +115,7 @@ class Home_state extends State<Home_Screen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
+
                       height: 155,
                       width: 265,
                       decoration: BoxDecoration(
@@ -126,6 +124,9 @@ class Home_state extends State<Home_Screen> {
                               fit: BoxFit.fill,
                               image: NetworkImage(
                                   "https://media-cdn.tripadvisor.com/media/photo-s/02/27/92/22/lady-liberty-facing-the.jpg"))),
+                      child: Container(
+                          padding: EdgeInsets.only(left: 20,top: 120),
+                          child: Text(ConstantString.price1,style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 16),)),
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(12, 12, 0, 0),
@@ -159,6 +160,9 @@ class Home_state extends State<Home_Screen> {
                               fit: BoxFit.fill,
                               image: NetworkImage(
                                   "https://images.unsplash.com/photo-1431274172761-fca41d930114?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"))),
+                      child: Container(
+                          padding: EdgeInsets.only(left: 20,top: 120),
+                          child: Text(ConstantString.price2,style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 16),)),
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(12, 12, 0, 0),
@@ -192,6 +196,9 @@ class Home_state extends State<Home_Screen> {
                               fit: BoxFit.fill,
                               image: NetworkImage(
                                   "https://www.ytravelblog.com/wp-content/uploads/2018/01/Sightseeing-New-York-City-Sightseeing-pass.jpg"))),
+                      child: Container(
+                          padding: EdgeInsets.only(left: 20,top: 120),
+                          child: Text(ConstantString.price3,style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 16),)),
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(12, 12, 0, 0),
@@ -216,8 +223,8 @@ class Home_state extends State<Home_Screen> {
             ),
           ),
           SizedBox(height: 6,),
-          ListTile(title: Text("Popular Places",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
-          trailing: Text("View All",style: TextStyle(color: Vcolors.ButtonColor),),),
+          ListTile(title: Text("Popular Places",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+          trailing:  Text("View All",style: TextStyle(color: Vcolors.ButtonColor,fontWeight: FontWeight.bold),),),
           SizedBox(height: 5,),
           Container(
             padding: EdgeInsets.only(left: 20),
@@ -237,28 +244,17 @@ class Home_state extends State<Home_Screen> {
                       height: 140,
                       width: 350,
                       decoration: BoxDecoration(
+
                           borderRadius: BorderRadius.circular(15),
                           image: DecorationImage(
                               fit: BoxFit.fill,
                               image: NetworkImage(
-                                  "https://media-cdn.tripadvisor.com/media/photo-s/02/27/92/22/lady-liberty-facing-the.jpg"))),
+                                  "https://media-cdn.tripadvisor.com/media/photo-s/02/27/92/22/lady-liberty-facing-the.jpg"),
+                          ),
+                      ),
+
                     ),
-                    // Padding(
-                    //   padding: const EdgeInsets.fromLTRB(12, 12, 0, 0),
-                    //   child: Text(
-                    //     'Thailand',
-                    //     style: GoogleFonts.montserrat(
-                    //       // color: Vcolors.vBlue,
-                    //         fontSize: 18,
-                    //         fontWeight: FontWeight.w600),
-                    //   ),
-                    // ),
-                    // Padding(
-                    //   padding: const EdgeInsets.fromLTRB(12, 8, 0, 0),
-                    //   child: Text('Bangkok',
-                    //       style: GoogleFonts.montserrat(
-                    //           color: Vcolors.deepgrey, fontSize: 17)),
-                    // ),
+
                   ],
                 ),
                 SizedBox(height: 10,),
@@ -277,22 +273,7 @@ class Home_state extends State<Home_Screen> {
                               image: NetworkImage(
                                   " "))),
                     ),
-                    // Padding(
-                    //   padding: const EdgeInsets.fromLTRB(12, 12, 0, 0),
-                    //   child: Text(
-                    //     'Thailand',
-                    //     style: GoogleFonts.montserrat(
-                    //       // color: Vcolors.vBlue,
-                    //         fontSize: 18,
-                    //         fontWeight: FontWeight.w600),
-                    //   ),
-                    // ),
-                    // Padding(
-                    //   padding: const EdgeInsets.fromLTRB(12, 8, 0, 0),
-                    //   child: Text('Bangkok',
-                    //       style: GoogleFonts.montserrat(
-                    //           color: Vcolors.deepgrey, fontSize: 17)),
-                    // ),
+
                   ],
                 ),
 
@@ -306,11 +287,5 @@ class Home_state extends State<Home_Screen> {
       bottomNavigationBar: BottomNavBarWidget(),
     );
   }
-  @override
-  void dispose() {
-    // TODO: implement dispose
 
-    super.dispose();
-    print("session Dispose");
-  }
 }

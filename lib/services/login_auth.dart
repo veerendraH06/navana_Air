@@ -15,6 +15,7 @@ Future<String> signInWithGoogle() async {
   );
 
   final AuthResult authResult = await _auth.signInWithCredential(credential);
+
 try{
   final FirebaseUser user = authResult.user;
 
@@ -26,9 +27,9 @@ try{
   return 'signInWithGoogle succeeded: $user';
 }
 
-catch (e){
+catch (error){
 
-  print(e);
+  print(error);
 }
 //   final FirebaseUser user = authResult.user;
 //

@@ -28,10 +28,14 @@ class ConstantString {
   static const Viewall = "View All";
   static const popularPlc = "Popular Places";
   static const flight="Flight";
-  static const hotel="hotel";
-  static const car="car";
-  static const resturant="resturant";
-  static const train="train";
+  static const hotel="Hotel";
+  static const car="Car";
+  static const resturant="Resturant";
+  static const train="Train";
+  static const price1="form \$490 USD";
+  static const price2="form \$440 USD";
+  static const price3="form \$450 USD";
+
 }
 
 /// validation function for name

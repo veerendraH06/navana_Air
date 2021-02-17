@@ -10,26 +10,29 @@ class CircularCard extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Column(
-      children: [
-        Container(
+    return InkWell(
+      onTap: (){},
+      child: Column(
+        children: [
+          Container(
 
-          child: Card(
-            color: HexColor(colors),
-            child: Icon(icon,color: Vcolors.ButtonColor,),
-            elevation: 10,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50),
+            child: Card(
+              color: HexColor(colors),
+              child: Icon(icon,color: Colors.white,),
+              elevation: 10,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50),
+              ),
+
             ),
-
+            width: 80,
+            height: 80,
+            //  color: Colors.amberAccent,
+            margin: const EdgeInsets.all(10),
           ),
-          width: 80,
-          height: 80,
-          //  color: Colors.amberAccent,
-          margin: const EdgeInsets.all(10),
-        ),
-        Text(text),
-      ],
+          Text(text,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
+        ],
+      ),
     );
   }
 

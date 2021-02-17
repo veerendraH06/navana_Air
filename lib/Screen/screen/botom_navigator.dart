@@ -21,36 +21,36 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
       type: BottomNavigationBarType.fixed,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(Icons.home,color: Colors.pinkAccent,),
+          icon: Icon(Icons.home,),
           title: Text(
             'Home',
             style: TextStyle(color: Color(0xFF2c2b2b)),
           ),
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.assistant_direction,color: Colors.pinkAccent,),
+          icon: Icon(Icons.assistant_direction,),
           title: Text(
             'Near By',
             style: TextStyle(color: Color(0xFF2c2b2b)),
           ),
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.card_giftcard,color: Colors.pinkAccent,),
+          icon: Icon(Icons.card_giftcard,),
           title: Text(
             'Cart',
             style: TextStyle(color: Color(0xFF2c2b2b)),
           ),
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.account_circle_rounded,color: Colors.pinkAccent,),
+          icon: Icon(Icons.account_circle_rounded,),
           title: Text(
             'Account',
             style: TextStyle(color: Color(0xFF2c2b2b)),
           ),
         ),
       ],
-      // currentIndex: _selectedIndex,
-      // selectedItemColor: Color(0xFFfd5352),
+      currentIndex: _selectedIndex,
+      selectedItemColor: Color(0xFFfd5352),
       onTap: _onItemTapped,
     );
   }
